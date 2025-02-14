@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ein Abenteuer mit Lara</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6f2;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 18px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e6005c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>✨ Ein Abenteuer mit Lara ✨</h1>
+        <p id="story">Heute hast du die Chance, einen unvergesslichen Tag mit Lara zu erleben. Was möchtest du tun?</p>
+        <button onclick="picknick()">🌳 Ein romantisches Picknick</button>
+        <button onclick="reise()">✈️ Ein spontanes Abenteuer</button>
+    </div>
+
+    <script>
+        function picknick() {
+            document.getElementById("story").innerHTML = "Du bereitest ein Picknick mit Laras Lieblingssnacks vor. Als ihr ankommt, scheint die Sonne perfekt. Ein Musiker bietet an, ein Lied zu spielen. Was tust du?";
+            updateButtons("❤️ Wunschlied spielen lassen", "🎤 Selber singen", happyEnd, peinlichSingen);
+        }
+
+        function reise() {
+            document.getElementById("story").innerHTML = "Ihr entscheidet euch für ein Abenteuer und landet an einer wunderschönen Bucht. Was macht ihr zuerst?";
+            updateButtons("🌊 Schwimmen gehen", "🏰 Sandburg bauen", happyEnd, happyEnd);
+        }
+
+        function peinlichSingen() {
+            document.getElementById("story").innerHTML = "Du versuchst, Lara ein Lied vorzusingen, aber deine Stimme zittert vor Nervosität. Lara lacht herzlich: 'Das war süß, aber bleib lieber beim Reden!' 😄";
+            updateButtons("💖 Weiter", happyEnd);
+        }
+
+        function happyEnd() {
+            document.getElementById("story").innerHTML = "Am Ende des Tages schaut dich Lara an und sagt: 'Das war einer der schönsten Tage überhaupt.' ✨ Sie nimmt deine Hand und du weißt, dass ihr eure eigene perfekte Geschichte geschrieben habt. 💕";
+            document.querySelector(".container").innerHTML += "<p>🎉 ENDE 🎉</p>";
+            removeButtons();
+        }
+
+        function updateButtons(text1, text2, func1, func2) {
+            let buttons = document.querySelectorAll("button");
+            buttons[0].innerText = text1;
+            buttons[0].onclick = func1;
+            buttons[1].innerText = text2;
+            buttons[1].onclick = func2;
+        }
+
+        function removeButtons() {
+            let buttons = document.querySelectorAll("button");
+            buttons.forEach(button => button.style.display = "none");
+        }
+    </script>
+
+</body>
+</html>
